@@ -1,0 +1,410 @@
+﻿
+<head>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"
+            integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="../css/reports.css" />
+    <link rel="stylesheet" href="../css/ReportsHeader.css" />
+
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script src="/vendors/bower_components/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="http://code.highcharts.com/stock/highstock.js"></script>
+    <script src="../js/highcharts/highcharts-more.js"></script>
+    <script src="../js/highcharts/modules/solid-gauge.js"></script>
+    <script src="../js/highchartsSample.js"></script>
+    <script src="../js/jquery-validation/jquery.validate.js"></script>
+    <script src="../vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../js/jquery-jtemplates.js"></script>
+    <script src="../js/jquery.stickytableheaders.js"></script>
+    <link href="../js/jquery-ui-1.11.4/jquery-ui.min.css" rel="stylesheet" />
+    <script src="../js/jquery-ui-1.11.4/jquery-ui.min.js"></script>
+
+    <script src="/js/page_base.js"></script>
+    <script src="js/dashboard.js"></script>
+
+    <script type="text/javascript" src="../FusionCharts/FusionCharts.js?i=201603081849"></script>
+
+
+    <style type="text/css">
+        
+        .containernoresult{
+           display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .containernoresult p{
+          max-width: 70%;
+          padding: 25px;
+          font-size:25px;
+          background-color: #337ab7;
+        }
+
+        .modal.modal-fullscreen {
+          /* Maximize the main wrappers on the screen */
+          /* Make the parent wrapper of the modal box a full-width block */
+          /* Remove borders and effects on the content */
+          /**
+	         * /!\ By using this feature, you force the header and footer to be placed
+	         * in an absolute position. You must handle by yourself the margin of the
+	         * content.
+	         */
+        }
+        .modal.modal-fullscreen .modal-dialog,
+        .modal.modal-fullscreen .modal-content {
+          bottom: 0;
+          left: 0;
+          position: absolute;
+          right: 0;
+          top: 0;
+        }
+        .modal.modal-fullscreen .modal-dialog {
+          margin: 0;
+          width: 100%;
+          animation-duration:0.6s;
+        }
+        .modal.modal-fullscreen .modal-content {
+          border: none;
+          -moz-border-radius: 0;
+          border-radius: 0;
+          -webkit-box-shadow: inherit;
+          -moz-box-shadow: inherit;
+          -o-box-shadow: inherit;
+          box-shadow: inherit;
+          /* change bg color below */
+         /* background:#1abc9c; */
+        }
+        .modal.modal-fullscreen.force-fullscreen {
+          /* Remove the padding inside the body */
+        }
+        .modal.modal-fullscreen.force-fullscreen .modal-body {
+          padding: 0;
+        }
+        .modal.modal-fullscreen.force-fullscreen .modal-header,
+        .modal.modal-fullscreen.force-fullscreen .modal-footer {
+          left: 0;
+          position: absolute;
+          right: 0;
+        }
+        .modal.modal-fullscreen.force-fullscreen .modal-header {
+          top: 0;
+        }
+        .modal.modal-fullscreen.force-fullscreen .modal-footer {
+          bottom: 0;
+        }
+
+
+
+
+
+        #dashboard-container-div {
+            position: absolute;
+            top: 50px;
+            left: 0px;
+            right: 0px;
+            bottom: 0px;
+            overflow-y: scroll;
+        }
+
+
+        .flip {
+            -webkit-perspective: 800;
+            perspective: 800;
+            position: relative;
+            border: 1px;
+            border-radius: 5px;
+        }
+
+            .flip .card.flipped {
+                -webkit-transform: rotatey(-180deg);
+                transform: rotatey(-180deg);
+            }
+
+            .flip .card {
+                width: 500px;
+                height: 350px;
+                -webkit-transform-style: preserve-3d;
+                -webkit-transition: 0.5s;
+                transform-style: preserve-3d;
+                transition: 0.5s;
+                background-color: #fff;
+                margin-top: 10%;
+                margin-bottom: 10%;
+            }
+
+                .flip .card .face {
+                    -webkit-backface-visibility: hidden;
+                    backface-visibility: hidden;
+                    z-index: 2;
+                }
+
+                .flip .card .front {
+                    width: 500px;
+                    z-index: 1;
+                    text-align: left;
+                }
+
+                .flip .card .back {
+                    -webkit-transform: rotatey(-180deg);
+                    transform: rotatey(-180deg);
+                }
+        .newclass-for-i{
+               font-size: 3em;
+        }
+        .input-group-customize {
+        }
+        
+
+          .loader {
+          position:absolute;
+          border: 16px solid blue;
+          border-radius: 50%;
+          border-top: 16px solid blue;
+          border-bottom: 16px solid blue;
+          width: 100px;
+          height: 100px;
+          margin-top:-40%;
+          margin-left:40%;
+          -webkit-animation: spin 2s linear infinite;
+          animation: spin 2s linear infinite;
+        }
+
+        @-webkit-keyframes spin {
+          0% { -webkit-transform: rotate(0deg); }
+          100% { -webkit-transform: rotate(360deg); }
+        }
+
+        @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+        .modal.modal-wide .modal-dialog {
+              width: 90%;
+        }
+
+    </style>
+
+
+</head>
+
+<body>
+    
+    <div class="col-sm-12" id="container_reportContent" style="display:none"></div>
+    
+    <div class="col-sm-12" id="container_chart1000" style=" display:none"></div>                
+    
+            
+
+    <div class="modal fade bs-example-modal-sm" id="popupchart" tabindex="-1" role="dialog" style="display:none;" aria-labelledby="mySmallModalLabel">
+        <div class="modal-dialog modal-sm" id="popchartContent" role="document">
+            <div class="modal-content">
+                <h3> Please wait......... </h3>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Confirm Delete</h4>
+                </div>
+
+                <div class="modal-body">
+                    <p id="deletemessage">Do you want to proceed?</pid>
+                    <p class="debug-url"></p>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-danger btn-ok">Delete</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div  class="modal fade" role="dialog" id="basicModal" style="bottom:-10;    left: 15px; right:10px; " tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-content">
+                <div class="modal-header" >
+                    <button type="button" class="close" id="fullscreenclose" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="fullScreenTitle"></h4>
+
+                </div>
+                <div class="modal-body">
+                    <div id="container_chart1000_old" ></div>
+                </div>
+                <div class="modal-footer">
+                 
+                </div>
+            </div>
+            <!-- /.modal-content -->
+      
+    </div>
+    <!-- /.modal -->
+    <div class="container" id="main" style="height:75%;">
+
+
+        <div id="chartcontainer" class="row parentrow">
+            <div id="parent0" class="col-md-6 col-lg-6 newrow">
+
+                <div id="chartsDialog0" class="panel panel-default" style="display:none">
+                    <div id="chartHeading0" class="panel-heading" style="display:none;">
+                        <a id="lnkDelete" onclick="removeParent(this);" href="#" >
+                            <i id="iconDelete0" class="fa fa-trash-o fa-2x" aria-hidden="true" onclick="showDelete(this);"></i>                        
+                        </a>
+                        <a id="lnkSettings0" onclick="fliptoChart(this);" href="#" class="pull-right">
+
+                            <i id="iconsettings0" class="fa fa-cog fa-2x" aria-hidden="true" onclick="fliptoChart(this);"></i>
+                        </a>  [ChartTitle]
+                    </div>
+                    <div class="panel-body" style="padding-left:0px; padding-right:15px; padding-bottom:0px; padding-top:15px; " >
+                        <div id="firstTrendChart" style="display:none; width: 100%; height: 100%">
+                        </div>
+                        <div class="form-group" style="" >
+                            <div id="firstTrendChart0" style="width: 100%; height: 300px">
+                            </div>
+                            <div class="loader" id="loader0" style="display:none"></div>
+                        </div>
+                    </div>
+                    <div class="panel-footer">
+
+                    </div>
+                </div>
+                <div id="settingDialog0" style="display:block;" class="panel panel-default">
+                    <div class="panel-heading">
+                        <b>Setings </b>
+                    </div>
+                    <br />
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-xs-4 text-left">
+                                    <input name="ChartDbId0" id="ChartDbId0"  type="hidden" value="-1">
+                                    <label for="ddlMatricType">Chart Title</label>
+                                </div>
+                                <div class="col-xs-8">
+                                    <select class="form-control" id="ddlMatricType0" onchange="validateDashboardSetting(this);">
+                                        <option value="1~vl_Reporting.dbo.sp_Chart_Distance_dev">Distance</option>
+                                        <option value="2~vl_Reporting.dbo.sp_Chart_VehicleMPGTargetMPG">Vehicle MPG, Vehicle Target MPG</option>
+                                        <option value="3~vl_Reporting.dbo.sp_Chart_FleetMPGTargetMPG">Fleet MPG. Fleet Target MPG</option>
+                                        <option value="4~vl_Reporting.dbo.sp_Chart_CO2Fleet">Vehicle Fuel Card MPG, Vehicle Fuel Card MPG Target</option>
+                                        <option value="5~vl_Reporting.dbo.sp_Chart_CO2Vehicle">Co2 Fleet</option>
+                                        <option value="6~vl_Reporting.dbo.sp_Chart_MilesPerHB">Co2 Vehicle</option>
+                                        <option value="7~vl_Reporting.dbo.sp_Chart_MilesPerHA">Vehicle Miles per HB</option>
+                                        <option value="8~vl_Reporting.vl_Reporting.dbo.sp_Chart_DurationIdle">Vehicle Miles per HA</option>
+                                        <option value="9~vl_Reporting.dbo.sp_Chart_DurationIdle">Vehicle Idling Time</option>
+
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-xs-4 text-left">
+                                    <input type="hidden" value="false">
+                                    <label for="material-select0">Chart Types</label>
+                                </div>
+                                <div class="col-xs-4">
+                                    <select onchange="changeRanking(this);" class="form-control" id="ddlRanking0">
+                                        <option value="1">Trend</option>
+                                        <option value="2">Ranking</option>
+                                        <option value="3">Gauge</option>
+                                        <option value="4">Pie Chart</option>
+                                        <option value="5">Fixed Column</option>
+                                        <option value="6">Spline</option>
+                   </select>
+                                </div>
+                                <div class="col-xs-4">
+                                    <select class="form-control" id="RanlingType0" style="display:block">
+                                        <option value="T5">Top 5</option>
+                                        <option value="T10">Top 10</option>                                        '
+                                        <option value="T15">Top 15</option>
+                                        <option value="T20">Top 20 </option>
+                                        <option value="T50">Top 50</option>
+                                        <option value="B5">Bottom 5</option>
+                                        <option value="B10">Bottom 10</option>
+                                        <option value="B15">Bottom 15</option>
+                                        <option value="B20">Bottom 20</option>
+                                        <option value="B50">Bottom 50</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-xs-4 text-left">
+                                    <label for="ddlShow">Show</label>
+                                </div>
+                                <div class="col-xs-8">
+                                    <select class="form-control" id="ddlShow0">
+                                        <option value="2">Vehicles</option>
+                                        <option value="1"> Drivers</option>
+                                        <option value="3">Speeding Violations</option>
+                                        <option value="4">Harsh Driving</option>
+                                        <option value="5">Stop Duration</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <div class="row">
+                                <div class="col-xs-4 text-left">
+                                    <label for="ddlTime">Time</label>
+                                </div>
+                                <div class="col-xs-8">
+                                    <input name="WeekDuration0" id="WeekDuration0" type="hidden" value="-1  ">
+                                    <input name="GetData0" id="GetData0" type="hidden" value="true">
+                                    <select class="form-control" onchange="storevalue(this);" id="ddlTime0">
+                                        <option value="1">This Week</option>
+                                        <option value="2">This Month</option>
+                                        <option value="3">Last Week</option>
+                                        <option value="4">Last Month</option>
+                                        <option value="5">YTD</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <div class="row">
+                                <div class="col-xs-4 text-left">
+                                    <label for="ddlTime">Size</label>
+                                </div>
+                                <div class="col-xs-8">
+                                    <select class="form-control" id="ddlSize0">
+                                        <option value="600">3</option>
+                                        <option value="400">1</option>
+                                        <option value="520">2</option>
+                                        
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-footer">
+                        <button data-dismiss="modal" type="button" class="btn btn-sm btn-default" onclick="showChart(this);" id="tempTClose0">Cancel</button>
+                        <button type="button" class="btn btn-sm btn-primary" onclick="showChart(this, null, true);" id="TemperatureTagpopBtn0"><i class="fa fa-check"></i>Save</button>
+                    </div>
+                </div>
+
+            </div>
+            <div  id="parent1"class="col-md-6 addMoreDiv">
+                <div class="card card-block">
+                    <div class="col-md-7 col-md-offset-5">
+                        <a href="#" class="btn btn-primary" onclick="addMoreChat(this);"><i class="fa fa-plus" aria-hidden="true"></i>Add More</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+</body>
